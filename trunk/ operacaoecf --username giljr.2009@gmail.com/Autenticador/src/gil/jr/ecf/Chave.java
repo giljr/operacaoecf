@@ -4,10 +4,10 @@ package gil.jr.ecf;
 /**
  * @author Gil jr 
  * Data: 02/11/2009
- * Versão: 0.1.GUI
- * Usado: Operação Ecf
+ * Versï¿½o: 0.1.GUI
+ * Usado: Operaï¿½ï¿½o Ecf
  */
-
+/**Armazena o nome do arquivo autenticado, as chaves md5 e sha1**/
 public class Chave {
 
 	/**
