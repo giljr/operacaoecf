@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.Font;
+import javax.swing.JCheckBox;
  
 /**
  * @author Gil jr 
@@ -54,6 +55,7 @@ public class Aplicativo extends JFrame {
 	protected ArrayList<Chave> chaveiro = new ArrayList<Chave>();
 	private static Logger informante = Logger.getLogger("Aplicativo.informa");
 	private static final int SAIDA_ANORMAL =  - 1;
+	private JCheckBox gerarZip = null;
 
 	/**
 	 * This is the default constructor
@@ -101,6 +103,9 @@ public class Aplicativo extends JFrame {
 	 */
 	private JPanel getJContentPane() throws SQLException {
 		if (jContentPane == null) {
+			GridBagConstraints gridBagConstraints12 = new GridBagConstraints();
+			gridBagConstraints12.gridx = 0;
+			gridBagConstraints12.gridy = 8;
 			GridBagConstraints gridBagConstraints1 = new GridBagConstraints();
 			gridBagConstraints1.gridx = 2;
 			gridBagConstraints1.fill = GridBagConstraints.BOTH;
@@ -171,6 +176,7 @@ public class Aplicativo extends JFrame {
 			jContentPane.add(getB_localizar(), gridBagConstraints51);
 			jContentPane.add(l_status1, gridBagConstraints6);
 			jContentPane.add(l_status2, gridBagConstraints1);
+			jContentPane.add(getGerarZip(), gridBagConstraints12);
 		}
 		return jContentPane;
 	}
@@ -222,14 +228,7 @@ public class Aplicativo extends JFrame {
 	 * @throws SQLException
 	 * @throws SQLException
 	 */
-	/*
-	 * private JComboBox getC_equipamento(){ if (c_equipamento == null){
-	 * c_equipamento = new JComboBox(); c_equipamento.addActionListener(new
-	 * java.awt.event.ActionListener(){ public void
-	 * actionPerformed(java.awt.event.ActionEvent e){
-	 * System.out.println("actionperformed acionada c equipamento"); } }); }
-	 * return c_equipamento; }
-	 */
+	
 	private JComboBox getC_equipamento() throws SQLException {
 
 		if (c_equipamento == null) {
@@ -319,6 +318,11 @@ public class Aplicativo extends JFrame {
 							}
 		  													
 							chaveiro.add(new Chave(arquivos_a_autenticar[i],md5,sha1));
+							if(gerarZip.isSelected()){
+								GeradorZip geradorZip = new GeradorZip(); 
+								geradorZip.zip(dir_arq_autenticaveis+"\\"+arquivos_a_autenticar[i]); 
+								
+							}
 
 						}
 
@@ -419,6 +423,19 @@ public class Aplicativo extends JFrame {
 	}
 
 	
+	/**
+	 * Esse método inicializa gerarZip	
+	 * 	
+	 * @return javax.swing.JCheckBox	
+	 */
+	private JCheckBox getGerarZip() {
+		if (gerarZip == null) {
+			gerarZip = new JCheckBox();
+			gerarZip.setText("Gerar .zip?");
+		}
+		return gerarZip;
+	}
+
 	public static void main(String[] args) {
 		Aplicativo autenticador = new Aplicativo();
 		autenticador.setDefaultCloseOperation(EXIT_ON_CLOSE);

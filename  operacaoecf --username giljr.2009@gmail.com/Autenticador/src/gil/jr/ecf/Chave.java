@@ -48,8 +48,7 @@ public class Chave {
 	}
 
 /*
-   Teste: rodando, acrescerá na tabela ArquivoAutenticado 
-          o nome do arquivo e as chaves; 
+   Teste: gera o nome do arquivo e as chaves para debug; 
    
 	public static void main(String[] args) {
 		String nomeArquivo = "BE050875610000020579_20090903_094611.MFD";
