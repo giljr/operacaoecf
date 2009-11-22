@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO_8859-1"?>
+<XFlat Name="ecf_schema" Description="Arquivo cvs saida sitafe">
+    <SequenceDef Name="relatorio-sitafe" EncodingName="ISO_8859-1" Description="relatorio de saida sitafe das ecf de contribuinte">
+        <RecordDef Name="cabecalho" MapToXml="No" RecSep="\#xD;\#xA;">
+            <FieldDef Name="data-emissao" QuotedValue="Yes" FieldSep="\#x2C;\#xD;\#xA;"/>
+            <FieldDef Name="ie" QuotedValue="Yes" FieldSep=","/>
+            <FieldDef Name="cnpj" QuotedValue="Yes" FieldSep=","/>
+            <FieldDef Name="rs" QuotedValue="Yes" FieldSep="\#x2C;\#xD;\#xA;" />
+            <FieldDef Name="end" QuotedValue="Yes" FieldSep=","/>
+            <FieldDef Name="municipio" QuotedValue="Yes" FieldSep=","/>           
+        </RecordDef>
+        <SequenceDef Name="equipamentos" >
+        <RecordDef Name="ecf" FieldSep="," RecSep="\#xD;\#xA;" MaxOccur="0">
+            <FieldDef Name="marca" QuotedValue="Yes"/>
+            <FieldDef Name="modelo" QuotedValue="Yes"/>
+            <FieldDef Name="nrato" QuotedValue="Yes"/>
+            <FieldDef Name="nrpedido" QuotedValue="Yes"/>
+            <FieldDef Name="nrfab" QuotedValue="Yes"/>
+            <FieldDef Name="nruso-cessacao" QuotedValue="Yes" FieldSep=","/> 
+        </RecordDef>
+        </SequenceDef>
+    </SequenceDef>
+</XFlat>

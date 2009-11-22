@@ -10,10 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @author Gil jr 
- * Data: 31/10/2009
- * Versão: 0.1.GUI
- * Usado: Operação Ecf
+ * @author Gil jr Data: 31/10/2009
+ *        Deprecado em 25/11/2009 - substituido por 'GerenteConexao'
  */
 
 public class GerenteBancoDadosMS {
@@ -24,8 +22,8 @@ public class GerenteBancoDadosMS {
 	private static File dir_raiz;
 	private static String[] bancosDados;
 	private static String bancoDados;
-	private static Connection conexao;
-	private static boolean temosConexao = false;
+	protected static Connection conexao;
+	protected static boolean temosConexao = false;
 
 	/**Retorna o primeiro arquivo .MDB (MS Access) do diretório raiz**/
 	public static String buscaBdAccessNoDirRaiz() {
@@ -95,7 +93,7 @@ public class GerenteBancoDadosMS {
 	/**Estabelece de devolve a conexão com o banco de dados MS Access na raiz**/
 	public static Connection estabeleceConexaoComMsBd() {
 
-		carregaDriver();
+		//carregaDriver();
 		/*
 		 * Testado apenas no Microsoft® Windows Vista™ Business Versão 6.0.6001
 		 * Service Pack 1 Compilação 6001

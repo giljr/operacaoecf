@@ -1,11 +1,9 @@
 package gil.jr.ecf;
 
 /**
- * @author Gil jr 
- * Data: 20/10/2009
- * Versão: 0.1.GUI
- * Usado: Operação Ecf
- *  
+ * @author Gil jr Data: 20/10/2009
+ * 
+ * Inicia o aplicativo, chamando o 'Splash'
  */
 
 import java.awt.BorderLayout;

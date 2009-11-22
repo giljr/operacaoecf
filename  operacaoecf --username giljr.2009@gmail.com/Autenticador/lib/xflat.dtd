@@ -1,0 +1,75 @@
+<!ELEMENT XFlat       ( SequenceDef | ChoiceDef | RecordDef ) >
+<!ELEMENT SequenceDef ( SequenceDef | ChoiceDef | RecordDef )+ >
+<!ELEMENT ChoiceDef   ( SequenceDef | ChoiceDef | RecordDef )+ >
+<!ELEMENT RecordDef   ( FieldDef )+ >
+<!ELEMENT FieldDef    EMPTY >
+<!ATTLIST XFlat
+        Description             CDATA                   #IMPLIED
+        Name                    NMTOKEN                 #IMPLIED >
+<!ATTLIST SequenceDef
+        Description             CDATA                   #IMPLIED
+        DTD                     CDATA                   #IMPLIED
+        EncodingName            CDATA                   #IMPLIED
+        MapToXml                (Element | No)          'Element'
+        MaxOccur                CDATA                   '1'
+        MinOccur                CDATA                   '1'
+        Name                    NMTOKEN                 #IMPLIED
+        OmitXmlDeclaration      (Yes|No)                'No'
+        Standalone              (Yes|No)                #IMPLIED
+        StyleSheet              CDATA                   #IMPLIED
+        StyleSheetType          CDATA                   #IMPLIED >
+<!ATTLIST ChoiceDef
+        Description             CDATA                   #IMPLIED
+        DTD                     CDATA                   #IMPLIED
+        EncodingName            CDATA                   #IMPLIED
+        MapToXml                (Element | No)          'Element'
+        MaxOccur                CDATA                   '1'
+        MinOccur                CDATA                   '1'
+        Name                    NMTOKEN                 #IMPLIED
+        OmitXmlDeclaration      (Yes|No)                'No'
+        Standalone              (Yes|No)                #IMPLIED
+        StyleSheet              CDATA                   #IMPLIED
+        StyleSheetType          CDATA                   #IMPLIED >
+<!ATTLIST RecordDef
+        Description             CDATA                   #IMPLIED
+        DTD                     CDATA                   #IMPLIED
+        EncodingName            CDATA                   #IMPLIED
+        FieldSep                CDATA                   #IMPLIED
+        MapToXml                (Element | No)          'Element'
+        MaxOccur                CDATA                   '1'
+        MinOccur                CDATA                   '1'
+        Name                    NMTOKEN                 #IMPLIED
+        OmitXmlDeclaration      (Yes|No)                'No'
+        RecSep                  CDATA                   #IMPLIED
+        Standalone              (Yes|No)                #IMPLIED
+        StyleSheet              CDATA                   #IMPLIED
+        StyleSheetType          CDATA                   #IMPLIED >
+<!ATTLIST FieldDef
+        DataType                (String|Integer|Float)  'String'
+        DefaultValue            CDATA                   #IMPLIED
+        Description             CDATA                   #IMPLIED
+        DTD                     CDATA                   #IMPLIED
+        EncodingName            CDATA                   #IMPLIED
+        FieldSep                CDATA                   #IMPLIED
+        InvalidChars            CDATA                   #IMPLIED
+        LeadingFillerChars      CDATA                   #IMPLIED
+        MapToXml                (Element |
+                                 Attribute |
+                                 ElementIfNotNull |
+                                 AttributeIfNotNull |
+                                 No)                    'Element'
+        MaxFieldLength          CDATA                   '80'
+        MaxValue                CDATA                   #IMPLIED 
+        MinFieldLength          CDATA                   '0'
+        MinValue                CDATA                   #IMPLIED 
+        Name                    NMTOKEN                 #IMPLIED
+        NullAllowed             (Yes|No)                'Yes'
+        OmitXmlDeclaration      (Yes|No)                'No'
+        QuotedValue             (Yes|No)                'No'
+        Standalone              (Yes|No)                #IMPLIED
+        StyleSheet              CDATA                   #IMPLIED
+        StyleSheetType          CDATA                   #IMPLIED
+        TrailingFillerChars     CDATA                   #IMPLIED
+        ValidChars              CDATA                   #IMPLIED
+        ValidValue              CDATA                   #IMPLIED >
+
