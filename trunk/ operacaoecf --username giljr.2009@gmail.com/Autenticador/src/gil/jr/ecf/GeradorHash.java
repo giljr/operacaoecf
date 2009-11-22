@@ -5,12 +5,7 @@ import java.io.InputStream;
 import java.security.MessageDigest;
 
 /**
- * @author Gil jr 
- * Data: 02/11/2009
- * Versão: 0.1.GUI
- * Usado: Operação Ecf
- *  
- * Gera os hash's md5 e sha1
+ * @author Gil jr Data: 02/11/2009
  */ 
 
 public class GeradorHash {
@@ -65,17 +60,16 @@ public class GeradorHash {
 		return sha1;
 	}
 
-/*	*//**
+/*	 *
 	 * Retorno de Controle:
 	 * md5=9ff70c8814e0693e5a730ccef9beb313
      * sha1=4f353479753c4ebe3ddaa6b2b0b64f25218f1b88
-
-	 *//*
+	 *
 	public static void main(String[] args) throws Exception {
 		System.out.println("md5=" + md5("012087_20090821_120311.MFD"));
 		System.out.println("sha1=" + sha1("012087_20090821_120311.MFD"));
 
 	}
-
-*/	
+*/
+	
 }

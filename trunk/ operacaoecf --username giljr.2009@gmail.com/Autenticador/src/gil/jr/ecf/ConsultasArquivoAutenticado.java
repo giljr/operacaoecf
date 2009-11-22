@@ -8,18 +8,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @author Gil Jr Versão: 0.1 Data: 31/10/2009 'PreparedStatements' usados para
- *         Tabela ArquivoAutenticado Aplicativo: 'Autenticador Java' da
- *         'Operação ECF'
- * 
- *      
+ * @author Gil Jr Data: 31/10/2009 
+ *            
+ *            Revisões: 20/11/2009 - implementação novo 'GerenteConexao';  
  */
+
+/**Objeto de acesso a dados (DAO) da tabela ArquivoAutenticado*/
 public class ConsultasArquivoAutenticado {
 
-	private static Connection NOVA_CONEXAO = null;
-
-	private static Logger informante = Logger
-			.getLogger("ConsultasArquivoAutenticado");
+	private static Logger informante = Logger.getLogger("ConsultasArquivoAutenticado");
 	private static final int SAIDA_ANORMAL = - 1;
 
 	private static PreparedStatement adicionaChaves = null;
@@ -27,32 +24,31 @@ public class ConsultasArquivoAutenticado {
 			"NomeArquivo_2, md5_2, sha_2, NomeArquivo_3, md5_3, sha_3, NomeArquivo_4, md5_4, sha_4, " +
 			"CodigoContribuinte, CodigoEcf) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-	private static boolean temosConexao = false;
+	private GerenteConexao gerente;
+	private Connection conexao;
+	private boolean temosConexao = false;
 
-	
-	//private ArrayList<Chave> chaveiro= null ;
-	//private String codigoEmpresa = null;
-	//private String codigoEcf = null;
-
-	/** Contrutor **/
-	public ConsultasArquivoAutenticado() {
+	/** Construtor **/
+	public ConsultasArquivoAutenticado(GerenteConexao gerente) {
+		this.gerente = gerente;
 		try {
-			NOVA_CONEXAO = GerenteBancoDadosMS.estabeleceConexaoComMsBd();
+			conexao = gerente.buscaConexaoPeloPoll();
+			
 			temosConexao = true;
 
-			adicionaChaves = NOVA_CONEXAO.prepareStatement(ADICIONA_CHAVES);
+			adicionaChaves = conexao.prepareStatement(ADICIONA_CHAVES);
 
 		} catch (SQLException e) {
 			temosConexao = false;
 			String logMsg = "Falha no contrutor! saindo do sistema...";
 			informante.log(Level.SEVERE, logMsg);
 			e.printStackTrace();
-			GerenteBancoDadosMS.limpaRecursos();
+			gerente.retornaConexaoParaPoll(conexao);
 			System.exit(SAIDA_ANORMAL);
 		}
 	}
 
-	/** Adiciona ArquivoAutenticado a tabela correspondente do MS Access **/
+	/** Adiciona as chaves a tabela ArquivoAutenticadodo banco de dados MS Access **/
 	 int adicionaChaves(ArrayList<Chave> chaveiro,
 			int codigoEmpresa, int codigoEcf) throws SQLException {
 		int SAIDA_NORMAL = 1;
@@ -140,15 +136,13 @@ public class ConsultasArquivoAutenticado {
 
 			} catch (SQLException e) {
 				String logMsg = "Falha ao adicionar na tabela ArquivoAutenticados!" +
-						" saindo do sistema...";
+						" Saindo...";
 				informante.log(Level.SEVERE, logMsg);
 				e.printStackTrace();
-				GerenteBancoDadosMS.limpaRecursos();				
-				System.exit(SAIDA_ANORMAL);
 				return SAIDA_ANORMAL;
 
 			} finally {
-				GerenteBancoDadosMS.limpaRecursos();
+				gerente.retornaConexaoParaPoll(conexao);
 			}
 		} else {
 			String logMsg = "Não Temos conexao! Saindo do sistema...";
@@ -161,9 +155,7 @@ public class ConsultasArquivoAutenticado {
 
 /*
   public static void main(String[] args) throws SQLException {
-	  
-	  
-	  
+	  	  
 	  ConsultasArquivoAutenticado consulta3 = new
 	  ConsultasArquivoAutenticado();
 	  System.out.println("Adicionando na tabela ArquivoAutenticado...");
@@ -174,9 +166,7 @@ public class ConsultasArquivoAutenticado {
 	  chaveiro.add(new Chave("Arq_4","md5_4","sha_4"));
 	  consulta3.adicionaChaves(chaveiro, 2, 50);
 	  System.out.println("Chaves adicionadas com sucesso na tabela ArquivoAutenticado!!!");
-	  
-	  
-	  
+	  	  
 	  }
 	 
 */
