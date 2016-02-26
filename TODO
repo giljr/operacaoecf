@@ -1,4 +1,5 @@
 TODO
 A- Use http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/digest/DigestUtils.html for md5 and sha1; 
-see: http://stackoverflow.com/questions/415953/how-can-i-generate-an-md5-hash;
+see: http://stackoverflow.com/questions/415953/how-can-i-generate-an-md5-hash; 
+or:  http://javarevisited.blogspot.com.br/2013/03/generate-md5-hash-in-java-string-byte-array-example-tutorial.html
 B- Correct text: 2º Tutorial > afim to a fim > ocê to Você; maõ to mão - use crl+L;
