@@ -1,4 +1,4 @@
 TODO
-1- Use http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/digest/DigestUtils.html for md5 and sha1; 
+A- Use http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/digest/DigestUtils.html for md5 and sha1; 
 see: http://stackoverflow.com/questions/415953/how-can-i-generate-an-md5-hash;
-1- Correct text: 2º Tutorial > afim to a fim > ocê to Você; maõ to mão - use crl+L;
+B- Correct text: 2º Tutorial > afim to a fim > ocê to Você; maõ to mão - use crl+L;
